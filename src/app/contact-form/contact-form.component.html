@@ -7,6 +7,16 @@
       <div *ngIf="firstName.errors.minlength">First Name dhould be minimum 3 characters</div>
       <div *ngIf="firstName.errors.pattern">First Name does not match the pattern</div>
     </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="gender" ngModel value="M"> Male
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="gender" ngModel value="F"> Female
+      </label>
+    </div>
   </div>
   <div class="form-group">
     <label for="comment">Comment:</label>
@@ -18,6 +28,13 @@
         <input type="checkbox" ngModel name="isSubscribed"> Subscribe
       </label>
     </div>
+  </div>
+  <div class="form-group">
+    <label for="contactMethod">Contact:</label>
+    <select multiple ngModel name="contactMethod" class="form-control">
+      <option value=""></option>
+      <option [ngValue]="method.id" *ngFor="let method of contactMethods">{{ method.name }}</option>
+    </select>
   </div>
   <p>{{ f.value | json }}</p>
   <button [disabled]="!f.valid" class="btn btn-primary">Submit</button>
